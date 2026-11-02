@@ -1,0 +1,319 @@
+:root{
+  --paper:#F3E8C9;
+  --card:#FBF5E3;
+  --ink:#2E2A1E;
+  --ink-soft:#5C5647;
+  --red:#A63A31;
+  --red-soft:#C4776E;
+  --mustard:#C98A2B;
+  --green:#57693F;
+  --line: rgba(46,42,30,0.18);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--paper);
+  background-image:radial-gradient(rgba(46,42,30,0.035) 1px, transparent 1px);
+  background-size:3px 3px;
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:48px 20px 80px;
+}
+.sheet{width:100%;max-width:600px;}
+.rule-top{
+  border-top:3px solid var(--red);
+  border-bottom:1px solid var(--red-soft);
+  height:5px;
+  margin-bottom:28px;
+}
+h1{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-optical-sizing:auto;
+  font-size:clamp(34px,6vw,50px);
+  line-height:1.08;
+  margin:0 0 6px;
+}
+.subhead{
+  font-size:15px;
+  color:var(--ink-soft);
+  margin:0 0 26px;
+  max-width:46ch;
+}
+
+/* Pestañas */
+.tabs{
+  display:flex;
+  gap:22px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:30px;
+}
+.tab{
+  background:none;
+  border:none;
+  border-bottom:2px solid transparent;
+  margin-bottom:-1px;
+  padding:8px 0 10px;
+  font-family:'Inter',sans-serif;
+  font-size:14px;
+  font-weight:500;
+  color:var(--ink-soft);
+  cursor:pointer;
+}
+.tab:hover{color:var(--ink);}
+.tab.activa{
+  color:var(--ink);
+  border-bottom-color:var(--red);
+}
+.tab .cuenta{
+  color:var(--mustard);
+  margin-left:4px;
+}
+.panel{display:none;}
+.panel.activo{display:block;}
+
+.field-block{margin-bottom:18px;}
+.field-label{
+  font-size:13px;
+  color:var(--ink-soft);
+  margin-bottom:8px;
+  display:block;
+}
+.campo{
+  width:100%;
+  background:transparent;
+  border:none;
+  border-bottom:2px solid var(--ink);
+  font-family:'Fraunces',serif;
+  font-size:22px;
+  font-weight:400;
+  color:var(--ink);
+  padding:6px 2px 12px;
+  outline:none;
+}
+.campo::placeholder{color:rgba(46,42,30,0.38);}
+.campo:focus{border-bottom-color:var(--red);}
+.row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-top:22px;
+  flex-wrap:wrap;
+}
+button.primary{
+  background:var(--red);
+  color:var(--card);
+  border:none;
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  font-weight:500;
+  padding:12px 22px;
+  border-radius:3px;
+  cursor:pointer;
+  transition:background .15s ease;
+}
+button.primary:hover{background:#8E2F27;}
+button.primary:disabled{background:rgba(46,42,30,0.25);cursor:default;}
+button.secondary{
+  background:transparent;
+  color:var(--ink);
+  border:1px solid var(--ink);
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  font-weight:500;
+  padding:11px 20px;
+  border-radius:3px;
+  cursor:pointer;
+}
+button.secondary:hover{background:rgba(46,42,30,0.06);}
+.hint{font-size:13px;color:var(--ink-soft);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.chips:empty{margin-top:0;}
+.chip{
+  font-size:13px;
+  padding:5px 12px;
+  border:1px solid var(--ink);
+  border-radius:20px;
+  color:var(--ink);
+  background:var(--card);
+}
+.chip.evitar{border-color:var(--red);color:var(--red);}
+
+#estado{margin-top:34px;font-size:14px;color:var(--ink-soft);display:none;}
+#estado.visible{display:block;}
+.spinner{
+  display:inline-block;
+  width:12px;height:12px;
+  border:2px solid var(--red-soft);
+  border-top-color:var(--red);
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  margin-right:8px;
+  vertical-align:-1px;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+#error{display:none;margin-top:24px;font-size:14px;color:var(--red);}
+#error.visible{display:block;}
+
+#resultados{margin-top:44px;}
+.resultados-titulo{
+  font-family:'Fraunces',serif;
+  font-size:20px;
+  font-weight:500;
+  margin:0 0 6px;
+}
+.resultados-sub{font-size:13px;color:var(--ink-soft);margin:0 0 24px;}
+
+/* Tarjetas de receta */
+.receta{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:24px 26px;
+  margin-bottom:20px;
+  position:relative;
+}
+.receta::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:52px;
+  height:1px;
+  background:var(--line);
+}
+.receta-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  padding-bottom:16px;
+}
+.receta-nombre{
+  font-family:'Fraunces',serif;
+  font-size:22px;
+  font-weight:500;
+  margin:0;
+  line-height:1.2;
+}
+.receta-tiempo{
+  font-size:13px;
+  color:var(--mustard);
+  white-space:nowrap;
+  font-weight:500;
+  padding-top:4px;
+}
+.receta-desc{
+  font-size:14px;
+  color:var(--ink-soft);
+  margin:18px 0 18px;
+  line-height:1.55;
+}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+.tag{font-size:12px;padding:3px 10px;border-radius:20px;}
+.tag.tienes{
+  background:rgba(87,105,63,0.14);
+  color:var(--green);
+  border:1px solid rgba(87,105,63,0.4);
+}
+.tag.falta{
+  background:rgba(166,58,49,0.08);
+  color:var(--red);
+  border:1px solid rgba(166,58,49,0.3);
+}
+.pasos{
+  margin:0;
+  padding-left:20px;
+  font-size:14px;
+  line-height:1.7;
+}
+.pasos li{margin-bottom:4px;}
+.pasos-label{font-size:12px;color:var(--ink-soft);margin-bottom:8px;}
+.receta-pie{
+  margin-top:20px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+  display:flex;
+}
+.btn-guardar{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:transparent;
+  border:1px solid var(--ink);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  font-size:13px;
+  font-weight:500;
+  padding:7px 14px;
+  border-radius:3px;
+  cursor:pointer;
+}
+.btn-guardar:hover{background:rgba(46,42,30,0.06);}
+.btn-guardar svg{fill:none;stroke:currentColor;stroke-width:1.6;}
+.btn-guardar.guardada{
+  background:var(--mustard);
+  border-color:var(--mustard);
+  color:var(--ink);
+}
+.btn-guardar.guardada svg{fill:currentColor;}
+
+/* Historial */
+.panel-barra{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+  gap:12px;
+}
+.panel-titulo{
+  font-family:'Fraunces',serif;
+  font-size:20px;
+  font-weight:500;
+  margin:0;
+}
+.link-btn{
+  background:none;
+  border:none;
+  padding:0;
+  font-family:'Inter',sans-serif;
+  font-size:13px;
+  color:var(--red);
+  cursor:pointer;
+  text-decoration:underline;
+}
+.vacio{
+  font-size:14px;
+  color:var(--ink-soft);
+  line-height:1.6;
+  max-width:44ch;
+}
+details.busqueda{
+  border-top:1px solid var(--line);
+  padding:14px 0;
+}
+details.busqueda:last-child{border-bottom:1px solid var(--line);}
+details.busqueda summary{
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:16px;
+}
+details.busqueda summary::-webkit-details-marker{display:none;}
+.busq-ing{
+  font-family:'Fraunces',serif;
+  font-size:17px;
+  font-weight:500;
+}
+.busq-meta{font-size:12px;color:var(--ink-soft);white-space:nowrap;}
+.busq-sin{font-size:12px;color:var(--red);margin-top:4px;}
+.busq-cuerpo{margin-top:20px;}
+
+@media (max-width:480px){
+  .receta{padding:20px 18px;}
+  .receta-head{flex-direction:column;gap:4px;}
+  .tabs{gap:16px;}
+}
