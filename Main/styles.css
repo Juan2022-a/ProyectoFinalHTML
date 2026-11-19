@@ -1098,7 +1098,17 @@ details.busqueda summary::-webkit-details-marker {
   margin: 0;
 }
 
+@media (max-width: 680px) {
+  .listas-grid,
+  .media-controles {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 520px) {
+  body {
+    padding: 28px 14px 60px;
+  }
   .top-bar {
     flex-direction: column;
     align-items: stretch;
@@ -1106,8 +1116,13 @@ details.busqueda summary::-webkit-details-marker {
   .top-actions {
     align-self: flex-end;
   }
+  #nav-hamburguesa {
+    right: 0;
+    left: auto;
+    min-width: 190px;
+  }
   .search-card, .receta, .guia-card, #pie-pagina {
-    padding: 20px 18px;
+    padding: 20px 16px;
   }
   .receta-head {
     flex-direction: column;
@@ -1117,9 +1132,5 @@ details.busqueda summary::-webkit-details-marker {
     width: 100%;
     margin-left: 0;
     margin-top: 4px;
-  }
-  .listas-grid,
-  .media-controles {
-    grid-template-columns: 1fr;
   }
 }
