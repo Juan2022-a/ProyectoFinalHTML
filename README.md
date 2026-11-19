@@ -27,7 +27,7 @@ Para ejecutar este proyecto de forma local en tu computadora, necesitas tener in
    * Abre tu navegador web de preferencia.
    * Ingresa a la siguiente URL para cargar el sistema[cite: 1]:
      ```text
-     http://localhost/xampp/ProyectoFinalHTML/Main/
+     http://localhost/ProyectoFinalHTML/Main/
      ```
 
 ---
