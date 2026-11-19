@@ -3,35 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>¿Qué quieres comer?</title>
+<title>¿Qué quieres comer? | Recetario Inteligente</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="sheet">
+<div class="sheet" id="inicio">
   <header class="top-bar">
     <div>
       <h1>¿Qué quieres comer?</h1>
       <p class="subhead">Dime qué ingredientes tienes en casa y te propongo algunas recetas que puedes hacer con ellos.</p>
     </div>
-    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema">
-      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="5"></circle>
-        <line x1="12" y1="1" x2="12" y2="3"></line>
-        <line x1="12" y1="21" x2="12" y2="23"></line>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-        <line x1="1" y1="12" x2="3" y2="12"></line>
-        <line x1="21" y1="12" x2="23" y2="12"></line>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-      </svg>
-      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-      </svg>
-      <span id="theme-label">Oscuro</span>
-    </button>
+
+    <div class="top-actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <span id="theme-label">Oscuro</span>
+      </button>
+
+      <!-- Menú Hamburguesa -->
+      <button class="menu-hamburguesa" id="btn-hamburguesa" type="button" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="nav-desplegable" id="nav-hamburguesa" aria-label="Navegación rápida">
+      <a href="#inicio" class="nav-enlace" data-ir-tab="buscar">Buscador de recetas</a>
+      <a href="#panel-historial" class="nav-enlace" data-ir-tab="historial">Historial de búsquedas</a>
+      <a href="#panel-guardadas" class="nav-enlace" data-ir-tab="guardadas">Recetas guardadas</a>
+      <a href="#guia-multimedia" class="nav-enlace">Guía y multimedia</a>
+      <a href="#pie-pagina" class="nav-enlace">Sugerencias y pie</a>
+    </nav>
   </header>
 
   <div class="tabs">
@@ -105,6 +123,92 @@
     </div>
     <div id="lista-guardadas"></div>
   </div>
+
+  <!-- Sección de Guía Rápida y Multimedia -->
+  <hr class="separador-seccion">
+  <section class="guia-card" id="guia-multimedia">
+    <h2>Guía rápida de cocina en casa</h2>
+    <h3>Aprovecha tus ingredientes básicos</h3>
+    <p>
+      Con <strong>¿Qué quieres comer?</strong> puedes reducir el desperdicio de alimentos.<br>
+      Solo selecciona lo que tienes en tu despensa y obtén <em>ideas prácticas y rápidas</em>.<br>
+      <small>*Las cantidades se ajustan automáticamente según el número de porciones.</small>
+    </p>
+
+    <div class="listas-grid">
+      <div>
+        <h4>Básicos recomendados (Lista no ordenada)</h4>
+        <ul class="lista-estilizada">
+          <li><strong>Proteínas:</strong> Huevos, pollo, frijoles y queso.</li>
+          <li><strong>Acompañamientos:</strong> Arroz, tortillas y plátano.</li>
+          <li><em>Sazones base:</em> Sal, pimienta, ajo y orégano.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Pasos para mejores resultados (Lista ordenada)</h5>
+        <ol class="lista-estilizada">
+          <li>Elige tus ingredientes disponibles arriba.</li>
+          <li>Indica alergias o alimentos que prefieras evitar.</li>
+          <li>Marca cada paso conforme cocinas tu receta.</li>
+        </ol>
+      </div>
+    </div>
+
+    <h6>Recursos visuales, multimedia y referencias</h6>
+    <div class="multimedia-bloque">
+      <a href="https://www.fao.org/nutrition/es/" target="_blank" rel="noopener noreferrer" class="enlace-imagen" title="Visitar guía de nutrición de la FAO">
+        <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=600&q=80" alt="Ingredientes frescos listos para cocinar" class="img-receta-guia">
+      </a>
+      <p class="texto-recursos">
+        Explora más consejos en el sitio oficial de <a href="https://www.fao.org/nutrition/es/" target="_blank" rel="noopener noreferrer">Nutrición FAO (enlace externo)</a> o <a href="#inicio">vuelve al buscador (enlace interno)</a>.
+      </p>
+
+      <div class="media-controles">
+        <div class="media-item">
+          <span class="field-label">Video tip de cocina rápida:</span>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/kV_5yDtDWnA?si=rQOOIR7hgnAk_gkt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de página con Formulario -->
+  <footer id="pie-pagina">
+    <h3>¿Quieres sugerir un ingrediente o receta?</h3>
+    <form id="form-sugerencia" class="form-pie">
+      <div class="field-block">
+        <label class="field-label" for="sug-nombre">Tu nombre</label>
+        <input type="text" class="campo" id="sug-nombre" placeholder="Ej. Eduardo Mejilla" required>
+      </div>
+      <div class="field-block">
+        <label class="field-label" for="sug-ingrediente">Ingrediente o platillo típico</label>
+        <input type="text" class="campo" id="sug-ingrediente" placeholder="Ej. Pupusas de ayote, loroco, yuca..." required>
+      </div>
+      <div class="check-group">
+        <label class="check-label">
+          <input type="checkbox" id="chk-rapida" value="rapida" checked>
+          <span>Es una preparación rápida (menos de 20 min)</span>
+        </label>
+        <label class="check-label">
+          <input type="checkbox" id="chk-economica" value="economica">
+          <span>Usa ingredientes económicos de despensa</span>
+        </label>
+      </div>
+      <div class="row">
+        <button type="submit" class="primary">Enviar sugerencia</button>
+        <button type="reset" class="ghost">Limpiar formulario</button>
+      </div>
+      <p id="msg-sugerencia" class="msg-confirmacion" aria-live="polite"></p>
+    </form>
+
+    <hr class="separador-seccion">
+    <p class="footer-copy">
+      <strong>¿Qué quieres comer?</strong> &mdash; Proyecto de <em>Diseño y Desarrollo de Sitios Web</em>.<br>
+      <small>Universidad Francisco Gavidia &bull; Ciclo 02-2026 &bull; <a href="#inicio">Subir arriba</a></small>
+    </p>
+  </footer>
 </div>
 
 <script src="script.js"></script>

@@ -15,6 +15,10 @@ const listaGuardadasEl = document.getElementById('lista-guardadas');
 const btnBorrarHistorial = document.getElementById('borrar-historial');
 const themeToggleBtn = document.getElementById('theme-toggle');
 const themeLabel = document.getElementById('theme-label');
+const btnHamburguesa = document.getElementById('btn-hamburguesa');
+const navHamburguesa = document.getElementById('nav-hamburguesa');
+const formSugerencia = document.getElementById('form-sugerencia');
+const msgSugerencia = document.getElementById('msg-sugerencia');
 
 let guardadas = [];
 let historial = [];
@@ -59,6 +63,46 @@ if(themeToggleBtn){
     const nuevoTema = esOscuro ? 'light' : 'dark';
     aplicarTema(nuevoTema);
     await store.set('recetario:tema', nuevoTema);
+  });
+}
+
+/* Lógica del Menú Hamburguesa */
+if(btnHamburguesa && navHamburguesa){
+  btnHamburguesa.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const abierto = navHamburguesa.classList.toggle('abierto');
+    btnHamburguesa.classList.toggle('abierto', abierto);
+    btnHamburguesa.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+  });
+
+  navHamburguesa.querySelectorAll('.nav-enlace').forEach(enlace => {
+    enlace.addEventListener('click', () => {
+      const tabDestino = enlace.dataset.irTab;
+      if(tabDestino) mostrarTab(tabDestino);
+      navHamburguesa.classList.remove('abierto');
+      btnHamburguesa.classList.remove('abierto');
+      btnHamburguesa.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if(!navHamburguesa.contains(e.target) && !btnHamburguesa.contains(e.target)){
+      navHamburguesa.classList.remove('abierto');
+      btnHamburguesa.classList.remove('abierto');
+      btnHamburguesa.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+/* Manejo del formulario de sugerencias del pie de página */
+if(formSugerencia){
+  formSugerencia.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById('sug-nombre').value.trim();
+    const ing = document.getElementById('sug-ingrediente').value.trim();
+    if(!nombre || !ing) return;
+    msgSugerencia.textContent = `¡Gracias, ${nombre}! Tu sugerencia ("${ing}") ha sido registrada.`;
+    formSugerencia.reset();
   });
 }
 
